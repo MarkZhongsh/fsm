@@ -5,6 +5,7 @@ class Person;
 class State
 {
 public:
-	void execute(Person* person);
+	virtual void execute(Person* person)=0;
+	virtual ~State()=0;
 };
 #endif

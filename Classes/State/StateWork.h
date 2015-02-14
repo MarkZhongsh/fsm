@@ -8,5 +8,6 @@ class StateWork : public State
 {
 public:
 	virtual void execute(Person* person);
+	virtual ~StateWork();
 };
 #endif

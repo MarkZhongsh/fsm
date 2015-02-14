@@ -1,10 +1,10 @@
 #include "Person.h"
-
+#include "fsm.h"
 USING_NS_CC;
 
 Person::Person()
 {
-	currState = NULL;
+	mFSM = NULL;
 }
 
 Person::~Person()
@@ -18,23 +18,19 @@ bool Person::init()
 	{
 		return false;
 	}
+	mFSM = FSM::createWithPerson(this);
+	//mFSM->changeState(new StateRest());
+	//mFSM->changeState(new StateRest());
+	//person->changeState(new StateRest());
+	mFSM->retain();
 	this->scheduleUpdate();
 	return true;
 }
 
 
-void Person::changeState(State* state)
-{
-	if(this->currState)
-	{
-		CC_SAFE_DELETE(currState);
-	}
-	this->currState = state;
-}
-
 void Person::update(float dt)
 {
-	this->currState->execute(this);
+	mFSM->update(dt);
 }
 
 void Person::work()
@@ -60,4 +56,9 @@ bool Person::isTire()
 bool Person::isWantToWork()
 {
 	return CCRANDOM_0_1() < 0.1f;
+}
+
+FSM* Person::getFSM()
+{
+	return mFSM;
 }

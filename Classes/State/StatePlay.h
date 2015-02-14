@@ -9,5 +9,6 @@ class StatePlay : public State
 {
 public:
 	virtual void execute(Person* person);
+	virtual ~StatePlay();
 };
 #endif

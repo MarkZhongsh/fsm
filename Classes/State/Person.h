@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "State.h"
 
-
+class FSM;
 class Person : public cocos2d::CCNode
 {
 public:
@@ -13,13 +13,13 @@ public:
 	CREATE_FUNC(Person);
 	virtual bool init();
 	void update(float dt);
-	void changeState(State* state);
 	void work();
 	void play();
 	void rest();
 	bool isTire();
 	bool isWantToWork();
+	FSM* getFSM();
 private:
-	State* currState;
+	FSM* mFSM;
 };
 #endif
