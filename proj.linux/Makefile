@@ -1,15 +1,20 @@
 EXECUTABLE = fsm
 
-INCLUDES = -I.. -I../Classes
+INCLUDES = -I.. -I../Classes -I../Classes/State
 
 SOURCES = main.cpp \
         ../Classes/AppDelegate.cpp \
-        ../Classes/HelloWorldScene.cpp
-
+        ../Classes/HelloWorldScene.cpp \
+        ../Classes/State/Person.cpp \
+        ../Classes/State/StatePlay.cpp \
+        ../Classes/State/StateWork.cpp \
+		../Classes/State/StateRest.cpp \
+        ../Classes/State/State.cpp \
+        ../Classes/State/fsm.cpp
 COCOS_ROOT = ../../..
 include $(COCOS_ROOT)/cocos2dx/proj.linux/cocos2dx.mk
 
-SHAREDLIBS += -lcocos2d
+SHAREDLIBS += -lcocos2d 
 COCOS_LIBS = $(LIB_DIR)/libcocos2d.so
 
 $(TARGET): $(OBJECTS) $(STATICLIBS) $(COCOS_LIBS) $(CORE_MAKEFILE_LIST)

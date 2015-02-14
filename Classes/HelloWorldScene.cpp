@@ -1,4 +1,7 @@
 #include "HelloWorldScene.h"
+#include "State/Person.h"
+#include "State/StateRest.h"
+#include "State/fsm.h"
 
 USING_NS_CC;
 
@@ -72,6 +75,10 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
+
+	Person* person = Person::create();
+	person->getFSM()->changeState(new StateRest());
+	this->addChild(person);
     
     return true;
 }
