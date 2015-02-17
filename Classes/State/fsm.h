@@ -14,6 +14,8 @@ public:
 	void update(float dt);
 	bool initWithPerson(Person* person);
 public:
+    void onReceivce(cocos2d::CCObject* state);
+public:
 	static FSM* createWithPerson(Person* person);
 private:
 	State* currState;

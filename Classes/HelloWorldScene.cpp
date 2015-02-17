@@ -2,8 +2,11 @@
 #include "State/Person.h"
 #include "State/StateRest.h"
 #include "State/fsm.h"
+#include "State/StateWork.h"
+#include "State/StatePlay.h"
 
 USING_NS_CC;
+#define NOTIFY CCNotificationCenter::sharedNotificationCenter()
 
 CCScene* HelloWorld::scene()
 {
@@ -77,8 +80,17 @@ bool HelloWorld::init()
     this->addChild(pSprite, 0);
 
 	Person* person = Person::create();
-	person->getFSM()->changeState(new StateRest());
+	//person->getFSM()->changeState(new StateRest());
 	this->addChild(person);
+
+    NOTIFY->postNotification("changestate",new StateWork());
+    NOTIFY->postNotification("changestate",new StateRest());
+    NOTIFY->postNotification("changestate",new StatePlay());
+    NOTIFY->postNotification("changestate",new StateWork());
+    NOTIFY->postNotification("changestate",new StateRest());
+
+    CCLOG("post");
+    //NOTIFY->postNotification("changestate",new StateRest());
     
     return true;
 }

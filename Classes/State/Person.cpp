@@ -23,7 +23,7 @@ bool Person::init()
 	//mFSM->changeState(new StateRest());
 	//person->changeState(new StateRest());
 	mFSM->retain();
-	this->scheduleUpdate();
+	//this->scheduleUpdate();
 	return true;
 }
 
